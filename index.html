@@ -3,1188 +3,619 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Christofer Yusalfino — Performance Marketing</title>
+  <title>Christofer Yusalfino — Performance Marketing Portfolio</title>
   <meta name="description" content="Performance Marketer with 5+ years experience managing Meta, TikTok, and Google Ads. Generated 6.18x ROAS, 280K+ first-party data at under $1 CPA." />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F5F0E0',
+            teal: '#2D6A5E',
+            gold: '#C9963A',
+            dark: '#1A1A1A',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #ffffff;
-      --bg-subtle: #f7f7f5;
-      --border: #e8e8e4;
-      --text: #111111;
-      --text-muted: #6b6b6b;
-      --text-faint: #999999;
-      --accent: #111111;
-      --accent-color: #2D6A5E;
-      --font: 'Inter', -apple-system, sans-serif;
-      --sidebar-w: 260px;
-    }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
-
-    /* ───── SIDEBAR ───── */
-    .sidebar {
-      position: fixed;
-      top: 0; left: 0; bottom: 0;
-      width: var(--sidebar-w);
-      padding: 40px 32px;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      overflow-y: auto;
-      background: var(--bg);
-      z-index: 100;
-    }
-
-    .sidebar-name {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text);
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-
-    .sidebar-role {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-bottom: 36px;
-    }
-
-    .sidebar-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      padding: 10px 12px;
-      background: var(--bg-subtle);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    .status-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      flex-shrink: 0;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    .nav-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 8px;
-    }
-
-    .nav-links { list-style: none; margin-bottom: 32px; }
-    .nav-links li { margin-bottom: 2px; }
-
-    .nav-links a {
-      display: block;
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: background 0.12s, color 0.12s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: var(--bg-subtle);
-      color: var(--text);
-    }
-
-    .sidebar-cta {
-      margin-top: auto;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-
-    .btn-primary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 10px 16px;
-      font-size: 13px;
-      font-weight: 600;
-      color: white;
-      background: #111111;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
-
-    .btn-primary:hover { opacity: 0.8; }
-
-    .btn-wa {
-      background: #00A884;
-      margin-top: 8px;
-    }
-
-    /* ───── MAIN ───── */
-    .main {
-      margin-left: var(--sidebar-w);
-      min-height: 100vh;
-      padding: 64px 72px;
-      max-width: calc(var(--sidebar-w) + 860px);
-    }
-
-    /* ───── SECTION ───── */
-    .section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-    .section:last-child { border-bottom: none; }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 24px;
-    }
-
-    h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.05; }
-    h2 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
-    h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
-
-    .hero-lead {
-      font-size: 17px;
-      color: var(--text-muted);
-      margin-top: 24px;
-      max-width: 560px;
-      line-height: 1.75;
-      font-weight: 400;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 12px;
-      margin-top: 36px;
-      flex-wrap: wrap;
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      text-decoration: none;
-      background: var(--bg);
-      transition: border-color 0.15s, background 0.15s;
-    }
-
-    .btn-outline:hover { border-color: #bbb; background: var(--bg-subtle); }
-
-    .btn-solid {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      color: white;
-      background: var(--text);
-      border: 1px solid transparent;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
-
-    .btn-solid:hover { opacity: 0.75; }
-
-    /* ───── STATS ROW ───── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 56px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .stat-item {
-      padding: 28px 24px;
-      border-right: 1px solid var(--border);
-    }
-
-    .stat-item:last-child { border-right: none; }
-
-    .stat-num {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    /* ───── ABOUT ───── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 56px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.8;
-    }
-
-    .about-text strong { color: var(--text); font-weight: 600; }
-
-    .profile-card {
-      width: 200px;
-      flex-shrink: 0;
-      text-align: center;
-    }
-
-    .profile-photo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 14px;
-      border: 2px solid var(--border);
-    }
-
-    .profile-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .profile-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .profile-title {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .profile-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-    }
-
-    .tag {
-      font-size: 11px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-    }
-
-    /* ───── CARDS ───── */
-    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      background: var(--bg);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    .card:hover {
-      border-color: #ccc;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-
-    .card-tag {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 14px;
-    }
-
-    .card h3 { margin-bottom: 4px; font-size: 17px; }
-
-    .card-date {
-      font-size: 12px;
-      color: var(--text-faint);
-      margin-bottom: 14px;
-    }
-
-    .card-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .card-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      padding: 16px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 16px;
-    }
-
-    .metric { text-align: center; }
-
-    .metric-num {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .metric-label {
-      font-size: 11px;
-      color: var(--text-faint);
-      line-height: 1.3;
-    }
-
-    .card-how {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 8px;
-    }
-
-    .card-points { list-style: none; }
-
-    .card-points li {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      padding: 3px 0;
-      display: flex;
-      gap: 8px;
-    }
-
-    .card-points li::before {
-      content: '›';
-      color: var(--text-faint);
-      flex-shrink: 0;
-    }
-
-    /* ───── EXPERIENCE ───── */
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
-
-    .exp-item {
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .exp-item:last-child { border-bottom: none; }
-
-    .exp-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-    .exp-company { font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px; }
-
-    .exp-period {
-      font-size: 12px;
-      color: var(--text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-      margin-top: 4px;
-    }
-
-    .exp-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-bottom: 8px;
-      color: white;
-    }
-
-    .badge-obj { background: #2D6A5E; }
-    .badge-plan { background: #1e4c8a; }
-
-    .exp-section { margin-bottom: 14px; }
-
-    .exp-section p, .exp-section li {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.75;
-    }
-
-    .exp-section ul { list-style: none; }
-    .exp-section li { display: flex; gap: 8px; padding: 2px 0; }
-    .exp-section li::before { content: '›'; color: var(--text-faint); flex-shrink: 0; }
-
-    .exp-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #2D6A5E;
-      background: rgba(45,106,94,0.08);
-      padding: 8px 12px;
-      border-radius: 8px;
-      margin-top: 8px;
-    }
-
-    /* ───── SKILLS ───── */
-    .skills-layout { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
-
-    .cert-grid { display: grid; gap: 8px; }
-
-    .cert-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 13.5px;
-      color: var(--text-muted);
-      background: var(--bg);
-      transition: border-color 0.15s;
-    }
-
-    .cert-item:hover { border-color: #ccc; }
-
-    .cert-check {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: #2D6A5E;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .cert-check svg { width: 10px; height: 10px; color: white; }
-
-    .skills-sidebar { display: flex; flex-direction: column; gap: 32px; }
-
-    .skills-group-label {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    .pill {
-      font-size: 12.5px;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      background: var(--bg);
-    }
-
-    .pill.filled {
-      background: #111;
-      color: white;
-      border-color: transparent;
-    }
-
-    /* ───── CONTACT ───── */
-    .contact-box {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 64px;
-      text-align: center;
-      background: var(--bg-subtle);
-    }
-
-    .contact-box h2 { margin-bottom: 16px; }
-
-    .contact-desc {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 460px;
-      margin: 0 auto 40px;
-      line-height: 1.75;
-    }
-
-    .contact-btns {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* ───── FOOTER ───── */
-    footer {
-      padding: 32px 0;
-      font-size: 12px;
-      color: var(--text-faint);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ───── MOBILE HEADER ───── */
-    .mobile-header {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .mobile-header-name { font-size: 14px; font-weight: 700; }
-
-    .mobile-menu-btn {
-      background: none; border: none; cursor: pointer;
-      padding: 4px; color: var(--text);
-    }
-
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 57px; left: 0; right: 0; bottom: 0;
-      background: var(--bg);
-      z-index: 190;
-      padding: 24px;
-      border-top: 1px solid var(--border);
-      flex-direction: column;
-      gap: 4px;
-      overflow-y: auto;
-    }
-
-    .mobile-nav a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .mobile-nav a:last-child { border-bottom: none; }
-
-    .mobile-nav-cta {
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    /* ───── RESPONSIVE ───── */
-    @media (max-width: 900px) {
-      .sidebar { display: none; }
-      .mobile-header { display: flex; }
-      .main { margin-left: 0; padding: 80px 24px 48px; max-width: 100%; }
-      .stats-row { grid-template-columns: 1fr 1fr; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-      .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
-      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .profile-card { width: 100%; display: flex; align-items: center; gap: 16px; text-align: left; }
-      .profile-photo { margin: 0; flex-shrink: 0; }
-      .profile-tags { justify-content: flex-start; }
-      .cards-grid { grid-template-columns: 1fr; }
-      .skills-layout { grid-template-columns: 1fr; }
-      .contact-box { padding: 40px 24px; }
-      .exp-item { grid-template-columns: 1fr; }
-    }
+    html { scroll-behavior: smooth; }
+    body { background-color: #F5F0E0; font-family: 'Inter', sans-serif; }
+    .stat-card:hover { transform: translateY(-2px); transition: transform 0.2s; }
+    .result-card:hover { background: rgba(255,255,255,0.85); transition: background 0.2s; }
   </style>
 </head>
-<body>
+<body class="text-dark">
 
-  <!-- ═══ SIDEBAR ═══ -->
-  <aside class="sidebar">
-    <div class="sidebar-name">Christofer Yusalfino</div>
-    <div class="sidebar-role">Performance Marketer · Jakarta</div>
-
-    <div class="sidebar-status">
-      <span class="status-dot"></span>
-      Open to opportunities
-    </div>
-
-    <p class="nav-label">Navigation</p>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#hero">About</a></li>
-      <li><a href="#results">Campaign Results</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills & Certs</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <div class="sidebar-cta">
-      <a href="https://wa.me/6282242509944?text=Hi%20Chris!%20I%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20potential%20collaboration"
-         target="_blank" rel="noopener noreferrer" class="btn-primary btn-wa">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.157 1.534 5.933L0 24l6.232-1.512A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10a9.96 9.96 0 01-5.003-1.34l-.358-.214-3.724.902.938-3.617-.235-.375A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2zm-1.07 4.5c-.198-.007-.37-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51z"/>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-black/10" style="background-color: #F5F0E0;">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <span class="font-bold text-lg tracking-tight">Christofer Yusalfino</span>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-medium hover:opacity-50 transition-opacity">About</a>
+        <a href="#results" class="text-sm font-medium hover:opacity-50 transition-opacity">Results</a>
+        <a href="#experience" class="text-sm font-medium hover:opacity-50 transition-opacity">Experience</a>
+        <a href="#skills" class="text-sm font-medium hover:opacity-50 transition-opacity">Skills</a>
+        <a href="https://wa.me/6282242509944?text=Hi%20Chris!%20I%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20potential%20collaboration" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-5 py-2.5 rounded-full text-white transition-opacity hover:opacity-80" style="background-color:#2D6A5E;">
+          Let's Talk
+        </a>
+      </div>
+      <!-- Mobile menu button -->
+      <button onclick="toggleMenu()" class="md:hidden p-1">
+        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
-        Let's Talk
-      </a>
-      <a href="mailto:christofer.yusalfino@gmail.com" class="btn-primary" style="background:#f4f4f0; color:#111; border:1px solid #e8e8e4; margin-top:8px;">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-        </svg>
-        Email Me
-      </a>
+      </button>
     </div>
-  </aside>
-
-  <!-- ═══ MOBILE HEADER ═══ -->
-  <header class="mobile-header">
-    <span class="mobile-header-name">Christofer Yusalfino</span>
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
-      <svg id="menu-icon" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </header>
-
-  <nav class="mobile-nav" id="mobile-nav">
-    <a href="#hero" onclick="closeMobileMenu()">About</a>
-    <a href="#results" onclick="closeMobileMenu()">Campaign Results</a>
-    <a href="#experience" onclick="closeMobileMenu()">Experience</a>
-    <a href="#skills" onclick="closeMobileMenu()">Skills & Certs</a>
-    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-    <div class="mobile-nav-cta">
-      <a href="https://wa.me/6282242509944?text=Hi%20Chris!%20I%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20potential%20collaboration"
-         target="_blank" rel="noopener noreferrer" class="btn-solid" style="background:#00A884; justify-content:center;">Let's Talk</a>
-      <a href="mailto:christofer.yusalfino@gmail.com" class="btn-outline" style="justify-content:center;">Email</a>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-black/10 pt-4 flex flex-col gap-3">
+      <a href="#about" onclick="toggleMenu()" class="text-sm font-medium">About</a>
+      <a href="#results" onclick="toggleMenu()" class="text-sm font-medium">Results</a>
+      <a href="#experience" onclick="toggleMenu()" class="text-sm font-medium">Experience</a>
+      <a href="#skills" onclick="toggleMenu()" class="text-sm font-medium">Skills</a>
+      <a href="#contact" onclick="toggleMenu()" class="text-sm font-medium">Contact</a>
     </div>
   </nav>
 
-  <!-- ═══ MAIN CONTENT ═══ -->
-  <main class="main">
-
-    <!-- HERO -->
-    <section id="hero" class="section" style="padding-top: 0;">
-      <span class="section-tag">📍 Jakarta, Indonesia</span>
-      <h1>Performance<br>Marketing<br><span style="color:#2D6A5E;">That Converts.</span></h1>
-      <p class="hero-lead">
-        5+ years running Meta, TikTok & Google Ads in top-tier agency environments.
-        I build data-driven campaigns that generate real, measurable results.
-      </p>
-      <div class="hero-ctas">
-        <a href="#results" class="btn-solid">See My Results →</a>
-        <a href="#contact" class="btn-outline">Let's Work Together</a>
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-item">
-          <div class="stat-num">6.18x</div>
-          <div class="stat-label">ROAS — Meta CPAS Shopee</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">280K+</div>
-          <div class="stat-label">First-Party Data Generated</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">$0.49</div>
-          <div class="stat-label">Cost per WhatsApp Lead</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">64%</div>
-          <div class="stat-label">Below Market Benchmark CPA</div>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-widest mb-6" style="color:#2D6A5E;">
+          📍 Jakarta, Indonesia
+        </p>
+        <h1 class="text-5xl md:text-7xl font-black leading-none mb-6 tracking-tight">
+          Performance<br>Marketing<br>
+          <span style="color:#2D6A5E;">That Converts.</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-black/60 mb-10 max-w-2xl leading-relaxed">
+          5+ years running Meta, TikTok & Google Ads in agency environments.
+          I build data-driven campaigns that generate real, measurable results.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#results" class="px-8 py-4 rounded-full font-semibold text-white text-lg transition-opacity hover:opacity-80" style="background-color:#1A1A1A;">
+            See My Results →
+          </a>
+          <a href="#contact" class="px-8 py-4 rounded-full font-semibold text-lg border-2 border-black/20 hover:border-black/40 transition-colors">
+            Let's Work Together
+          </a>
         </div>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <span class="section-tag">Introduction</span>
-      <div class="about-grid">
-        <div class="about-text">
-          <h2 style="margin-bottom: 24px;">I explore the world<br>through measurable value.</h2>
-          <p>
-            I helped generate <strong>280K+ high-purchase-intent retail first-party data</strong>
-            for a personal care brand at under <strong>$1 per customer acquisition</strong>.
-          </p>
-          <p>
-            Performance Marketer with hands-on experience managing <strong>Meta, TikTok,
-            and Google Ads</strong> in agency environments. Skilled in strategic planning,
-            data-driven optimization, and full-funnel campaign execution.
-          </p>
-          <p>
-            Early in my journey as a <strong>Sales Development Representative</strong>,
-            backed by 5+ years of experience in digital marketing, client prospecting,
-            and client servicing.
-          </p>
+      <!-- Headline Stats -->
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="background-color: rgba(0,0,0,0.1);">
+        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">6.18x</div>
+          <div class="text-sm text-black/50 leading-tight">ROAS — Meta CPAS Shopee</div>
         </div>
-        <div class="profile-card">
-          <div class="profile-photo">
-            <img src="Photo_ChristoferYusalfino.png" alt="Christofer Yusalfino" />
+        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">280K+</div>
+          <div class="text-sm text-black/50 leading-tight">First-Party Data Generated</div>
+        </div>
+        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">$0.49</div>
+          <div class="text-sm text-black/50 leading-tight">Cost per WhatsApp Lead</div>
+        </div>
+        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">64%</div>
+          <div class="text-sm text-black/50 leading-tight">Below Market Benchmark CPA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20 px-6" style="background-color: rgba(255,255,255,0.4);">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Introduction</p>
+          <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+            I explore the world through measurable value.
+          </h2>
+          <div class="space-y-4 text-black/70 text-lg leading-relaxed">
+            <p>
+              I helped generate <strong class="text-black">280K+ high-purchase-intent retail first-party data</strong>
+              for a personal care brand at under <strong class="text-black">$1 per customer acquisition</strong>.
+            </p>
+            <p>
+              Performance Marketer with hands-on experience managing <strong class="text-black">Meta, TikTok,
+              and Google Ads</strong> in agency environments. Skilled in strategic planning,
+              data-driven optimization, and full-funnel campaign execution.
+            </p>
+            <p>
+              Early in my journey as a <strong class="text-black">Sales Development Representative</strong>,
+              backed by 5+ years of experience in digital marketing, client prospecting,
+              and client servicing.
+            </p>
           </div>
-          <div class="profile-name">Christofer Yusalfino</div>
-          <div class="profile-title">Performance Marketer · Jakarta</div>
-          <div class="profile-tags">
-            <span class="tag">Meta Ads</span>
-            <span class="tag">TikTok Ads</span>
-            <span class="tag">Google Ads</span>
+        </div>
+        <div class="rounded-2xl overflow-hidden bg-black/5 aspect-video flex items-center justify-center">
+          <div class="text-center p-8">
+            <div class="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden border-4 border-white shadow-lg">
+              <img src="Photo_ChristoferYusalfino.png" alt="Christofer Yusalfino" class="w-full h-full object-cover object-top" />
+            </div>
+            <p class="font-bold text-lg">Christofer Yusalfino</p>
+            <p class="text-black/50 text-sm">Performance Marketer · Jakarta</p>
+            <div class="mt-4 flex justify-center gap-3 flex-wrap">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-black/10">Meta Ads</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-black/10">TikTok Ads</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-black/10">Google Ads</span>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CAMPAIGN RESULTS -->
-    <section id="results" class="section">
-      <span class="section-tag">Campaign Results</span>
-      <h2 style="margin-bottom: 12px;">Real numbers.<br>Real impact.</h2>
-      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 40px; max-width: 480px; line-height: 1.7;">
+  <!-- Results -->
+  <section id="results" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Campaign Results</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Real numbers. Real impact.</h2>
+      <p class="text-black/50 text-lg mb-14 max-w-xl">
         Every result below is backed by actual campaign data from agency work at OMD, Wavemaker, and Mindshare.
       </p>
 
-      <div class="cards-grid">
+      <div class="grid md:grid-cols-2 gap-6">
 
-        <div class="card">
-          <div class="card-tag">Meta Ads · Beauty & Personal Care</div>
-          <h3>META CPAS at Shopee</h3>
-          <div class="card-date">Feb – Apr 2024</div>
-          <p class="card-desc">Drove massive e-commerce sales on Shopee by retargeting past buyers with tailored creative per audience segment, featuring attractive discounts that pushed conversions.</p>
-          <div class="card-metrics">
-            <div class="metric">
-              <div class="metric-num">6.18x</div>
-              <div class="metric-label">Return on Ad Spend</div>
+        <!-- Result 1 -->
+        <div class="result-card rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-black/5">Meta Ads · Beauty & Personal Care</span>
+          <h3 class="text-2xl font-black mt-4 mb-1">META CPAS at Shopee</h3>
+          <p class="text-xs text-black/40 mb-4 font-medium">Feb – Apr 2024</p>
+          <p class="text-black/60 text-sm leading-relaxed mb-6">
+            Drove massive e-commerce sales on Shopee by retargeting past buyers with tailored creative per audience segment, featuring attractive discounts that pushed conversions.
+          </p>
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">6.18x</div>
+              <div class="text-xs text-black/40 mt-1">Return on Ad Spend</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">&gt;41K</div>
-              <div class="metric-label">Sales (IDR 680M)</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;41K</div>
+              <div class="text-xs text-black/40 mt-1">Sales (IDR 680M)</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">$0.70</div>
-              <div class="metric-label">Cost per Acquisition</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">$0.70</div>
+              <div class="text-xs text-black/40 mt-1">Cost per Acquisition</div>
             </div>
           </div>
-          <div class="card-how">How it was achieved</div>
-          <ul class="card-points">
-            <li>Retargeted past buyers within 60-day window</li>
-            <li>Tailored creative messaging per audience segment</li>
-            <li>A/B tested product images featuring visible discount amounts</li>
-          </ul>
+          <div class="border-t border-black/5 pt-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
+            <ul class="space-y-1">
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Retargeted past buyers within 60-day window</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Tailored creative messaging per audience segment</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> A/B tested product images featuring visible discount amounts</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-tag">Meta Ads · Beauty & Personal Care</div>
-          <h3>Chat-to-WhatsApp Lead Generation</h3>
-          <div class="card-date">Jan – Feb 2025</div>
-          <p class="card-desc">Exceeded Meta's historical market benchmark by 64% through optimal audience sizing and contextual creative that drove high-quality WhatsApp conversations.</p>
-          <div class="card-metrics">
-            <div class="metric">
-              <div class="metric-num">14,128</div>
-              <div class="metric-label">Chat to WhatsApp</div>
+        <!-- Result 2 -->
+        <div class="result-card rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-black/5">Meta Ads · Beauty & Personal Care</span>
+          <h3 class="text-2xl font-black mt-4 mb-1">Chat-to-WhatsApp Lead Generation</h3>
+          <p class="text-xs text-black/40 mb-4 font-medium">Jan – Feb 2025</p>
+          <p class="text-black/60 text-sm leading-relaxed mb-6">
+            Exceeded Meta's historical market benchmark by 64% through optimal audience sizing and contextual creative that drove high-quality WhatsApp conversations.
+          </p>
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">14,128</div>
+              <div class="text-xs text-black/40 mt-1">Chat to WhatsApp</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">$0.49</div>
-              <div class="metric-label">CPM vs $1.36 benchmark</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">$0.49</div>
+              <div class="text-xs text-black/40 mt-1">CPM vs $1.36 benchmark</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">64%</div>
-              <div class="metric-label">Lower than Market</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">64%</div>
+              <div class="text-xs text-black/40 mt-1">Lower than Market</div>
             </div>
           </div>
-          <div class="card-how">How it was achieved</div>
-          <ul class="card-points">
-            <li>Maintained optimal audience size for effective reach</li>
-            <li>Tailored creative messaging per audience segment</li>
-            <li>Provided engaging auto-text options to improve interaction rates</li>
-          </ul>
+          <div class="border-t border-black/5 pt-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
+            <ul class="space-y-1">
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Maintained optimal audience size for effective reach</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Tailored creative messaging per audience segment</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Provided engaging auto-text options to improve interaction rates</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-tag">Google Ads · Performance Max</div>
-          <h3>Performance Max — Festive Season</h3>
-          <div class="card-date">Apr – Jun 2023</div>
-          <p class="card-desc">Leveraged all Google inventory (display, search, video) with beauty in-market targeting to maximize touchpoints, achieving 79% below benchmark cost per lead.</p>
-          <div class="card-metrics">
-            <div class="metric">
-              <div class="metric-num">2.39%</div>
-              <div class="metric-label">Click-Through Rate</div>
+        <!-- Result 3 -->
+        <div class="result-card rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-black/5">Google Ads · Performance Max</span>
+          <h3 class="text-2xl font-black mt-4 mb-1">Performance Max — Festive Season</h3>
+          <p class="text-xs text-black/40 mb-4 font-medium">Apr – Jun 2023</p>
+          <p class="text-black/60 text-sm leading-relaxed mb-6">
+            Leveraged all Google inventory (display, search, video) with beauty in-market targeting to maximize touchpoints, achieving 79% below benchmark cost per lead.
+          </p>
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">2.39%</div>
+              <div class="text-xs text-black/40 mt-1">Click-Through Rate</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">&gt;6K</div>
-              <div class="metric-label">Newsletter Subscribers</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;6K</div>
+              <div class="text-xs text-black/40 mt-1">Newsletter Subscribers</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">$0.45</div>
-              <div class="metric-label">CPL vs $2.11 benchmark</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">$0.45</div>
+              <div class="text-xs text-black/40 mt-1">CPL vs $2.11 benchmark</div>
             </div>
           </div>
-          <div class="card-how">How it was achieved</div>
-          <ul class="card-points">
-            <li>Targeted in-market audience with beauty & skincare purchase intent</li>
-            <li>Utilized all Google inventory: display, search, and video</li>
-            <li>Engaging headline copy to boost CTR and reduce CPL</li>
-          </ul>
+          <div class="border-t border-black/5 pt-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
+            <ul class="space-y-1">
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Targeted in-market audience with beauty & skincare purchase intent</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Utilized all Google inventory: display, search, and video</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Engaging headline copy to boost CTR and reduce CPL</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-tag">Organic Social · Ramadhan Campaign</div>
-          <h3>Micellar Water Ramadhan Campaign</h3>
-          <div class="card-date">Ramadhan 2023</div>
-          <p class="card-desc">Strategically placed Micellar Water dispensers in 9 high-traffic mosques and musholla across Jakarta — turning product trial into viral organic content.</p>
-          <div class="card-metrics">
-            <div class="metric">
-              <div class="metric-num">&gt;1K</div>
-              <div class="metric-label">Content Shares</div>
+        <!-- Result 4 -->
+        <div class="result-card rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-black/5">Organic Social · Ramadhan Campaign</span>
+          <h3 class="text-2xl font-black mt-4 mb-1">Micellar Water Ramadhan Campaign</h3>
+          <p class="text-xs text-black/40 mb-4 font-medium">Ramadhan 2023</p>
+          <p class="text-black/60 text-sm leading-relaxed mb-6">
+            Strategically placed Micellar Water dispensers in 9 high-traffic mosques and musholla across Jakarta — turning product trial into viral organic content.
+          </p>
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;1,000</div>
+              <div class="text-xs text-black/40 mt-1">Content Shares</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">&gt;2.5M</div>
-              <div class="metric-label">Organic Impressions</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;2.5M</div>
+              <div class="text-xs text-black/40 mt-1">Organic Impressions</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">7</div>
-              <div class="metric-label">Organic IG Posts</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">7</div>
+              <div class="text-xs text-black/40 mt-1">Organic IG Posts</div>
             </div>
           </div>
-          <div class="card-how">How it was achieved</div>
-          <ul class="card-points">
-            <li>Installed dispensers in 5 mosques & 4 musholla across Greater Jakarta</li>
-            <li>Aligned brand message (#YakinPindahKe100%) with Ramadhan moment</li>
-            <li>Offered direct product trial at the most contextually relevant time</li>
-          </ul>
+          <div class="border-t border-black/5 pt-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
+            <ul class="space-y-1">
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Installed dispensers in 5 mosques & 4 musholla across Greater Jakarta</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Aligned brand message (#YakinPindahKe100%) with Ramadhan moment</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Offered direct product trial at the most contextually relevant time</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-tag">YouTube · Men Skincare</div>
-          <h3>Shampoo Color Launch — YouTube</h3>
-          <div class="card-date">March 2021</div>
-          <p class="card-desc">Identified the perfect YouTuber match for the brand's celebrity ambassador to create authentic conversation, delivering 50% lower CPV than competing celebrity options.</p>
-          <div class="card-metrics">
-            <div class="metric">
-              <div class="metric-num">485K</div>
-              <div class="metric-label">Views in 2 Weeks</div>
+        <!-- Result 5 -->
+        <div class="result-card rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-black/5">YouTube · Men Skincare</span>
+          <h3 class="text-2xl font-black mt-4 mb-1">Shampoo Color Launch — YouTube</h3>
+          <p class="text-xs text-black/40 mb-4 font-medium">March 2021</p>
+          <p class="text-black/60 text-sm leading-relaxed mb-6">
+            Identified the perfect YouTuber match for the brand's celebrity ambassador to create authentic conversation, delivering 50% lower CPV than competing celebrity options.
+          </p>
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">485K</div>
+              <div class="text-xs text-black/40 mt-1">Views in 2 Weeks</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">2X</div>
-              <div class="metric-label">Engagement Rate vs KPI</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">2X</div>
+              <div class="text-xs text-black/40 mt-1">Engagement Rate vs KPI</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">50%</div>
-              <div class="metric-label">Lower CPV vs Competitors</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">50%</div>
+              <div class="text-xs text-black/40 mt-1">Lower CPV vs Competitors</div>
             </div>
           </div>
-          <div class="card-how">How it was achieved</div>
-          <ul class="card-points">
-            <li>Researched YouTuber alignment with brand ambassador using YouTube data</li>
-            <li>Identified contextually authentic match to build the right conversation angle</li>
-            <li>Managed full administrative & deal process with talent management</li>
-          </ul>
+          <div class="border-t border-black/5 pt-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
+            <ul class="space-y-1">
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Researched YouTuber alignment with brand ambassador using YouTube data</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Identified contextually authentic match to build the right conversation angle</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Managed full administrative & deal process with talent management</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-tag">Performance Optimization · E-Commerce</div>
-          <h3>Turbo Super Serum — Tokopedia #2</h3>
-          <div class="card-date">August 2022</div>
-          <p class="card-desc">Applied 1st-party data targeting and lookalike remarketing to drive the product to become the 2nd best-selling serum on Tokopedia, contributing to a 10-point market share increase.</p>
-          <div class="card-metrics">
-            <div class="metric">
-              <div class="metric-num">2X</div>
-              <div class="metric-label">Higher CTR</div>
+        <!-- Result 6 -->
+        <div class="result-card rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-black/5">Performance Optimization · E-Commerce</span>
+          <h3 class="text-2xl font-black mt-4 mb-1">Turbo Super Serum — Tokopedia #2</h3>
+          <p class="text-xs text-black/40 mb-4 font-medium">August 2022</p>
+          <p class="text-black/60 text-sm leading-relaxed mb-6">
+            Applied 1st-party data targeting and lookalike remarketing to drive the product to become the 2nd best-selling serum on Tokopedia. Contributed to 10-point market share increase (42% → 52%).
+          </p>
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">2X</div>
+              <div class="text-xs text-black/40 mt-1">Higher CTR</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">40%</div>
-              <div class="metric-label">Higher VTR (YouTube)</div>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">40%</div>
+              <div class="text-xs text-black/40 mt-1">Higher VTR (YouTube)</div>
             </div>
-            <div class="metric">
-              <div class="metric-num">23%</div>
-              <div class="metric-label">Lower CPC (Search)</div>
-            </div>
-          </div>
-          <div class="card-how">How it was achieved</div>
-          <ul class="card-points">
-            <li>Applied 1st-party data targeting & lookalike remarketing in Meta Ads</li>
-            <li>Picked more relevant targeting in Google Ads YouTube TrueView</li>
-            <li>Applied men's affinity keywords in Google Search campaigns</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <span class="section-tag">Work Experience</span>
-      <h2 style="margin-bottom: 48px;">5+ Years in Top<br>Media Agencies</h2>
-
-      <div class="exp-list">
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-title">Senior Digital Planner</div>
-            <div class="exp-company">OMD Indonesia — an agency under OMG</div>
-            <div class="exp-section">
-              <span class="exp-badge badge-obj">Objective</span>
-              <p>Retain OMD Indonesia's contract with a major Personal & Healthcare company by rebuilding trust after a broken relationship in late 2022, while expanding the agency's portfolio through new client pitching.</p>
-            </div>
-            <div class="exp-section">
-              <span class="exp-badge badge-plan">Plan & Execution</span>
-              <ul>
-                <li>Went extra miles on every campaign (Wound Care, Body & Face Care, Digital CRM)</li>
-                <li>Collaborated with Chief Growth & Strategy Officer on competitive pitches for Baby Products, Home Furniture, Health & Beauty, Investment Apps, and Perfume</li>
-              </ul>
+            <div class="text-center">
+              <div class="text-2xl font-black" style="color:#2D6A5E;">23%</div>
+              <div class="text-xs text-black/40 mt-1">Lower CPC (Search)</div>
             </div>
           </div>
-          <div class="exp-period">2023 – 2024</div>
-        </div>
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-title">Connection Media Planner</div>
-            <div class="exp-company">Wavemaker — an agency under GroupM</div>
-            <div class="exp-section">
-              <span class="exp-badge badge-obj">Objective</span>
-              <p>Help a leading men skincare brand increase its market share in the Men Care Category through brand awareness, precision targeting, and performance campaign optimization.</p>
-            </div>
-            <div class="exp-section">
-              <span class="exp-badge badge-plan">Plan & Execution</span>
-              <ul>
-                <li>Strengthen brand awareness & consideration across product launches</li>
-                <li>Precision audience targeting through contextual & authentic messaging</li>
-                <li>Performance campaign optimization through innovative media solutions</li>
-              </ul>
-              <div class="exp-highlight">🏆 Contributed to 10-point market share increase (42% → 52%) over two years</div>
-            </div>
+          <div class="border-t border-black/5 pt-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
+            <ul class="space-y-1">
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Applied 1st-party data targeting & lookalike remarketing in Meta Ads</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Picked more relevant targeting in Google Ads YouTube TrueView</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Applied men's affinity keywords in Google Search campaigns</li>
+            </ul>
           </div>
-          <div class="exp-period">2021 – 2023</div>
-        </div>
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-title">Data Scientist Executive</div>
-            <div class="exp-company">Mindshare — an agency under GroupM</div>
-            <div class="exp-section">
-              <span class="exp-badge badge-obj">Objective</span>
-              <p>Support Mindshare's planning and investment teams by increasing work efficiency through visualized data, enabling faster decision-making for the Unilever account.</p>
-            </div>
-            <div class="exp-section">
-              <span class="exp-badge badge-plan">Plan & Execution</span>
-              <ul>
-                <li>Built Newsletter TV Competition Weekly product — reduced strategy decision-making by 3–4 days</li>
-                <li>Automated 100+ monthly Purchase Orders using Excel Macro (VBA) — reduced processing from one week to one day</li>
-              </ul>
-              <p style="font-size: 12px; color: var(--text-faint); font-style: italic; margin-top: 10px;">Transitioned to client-facing role following recognition from Mindshare's Managing Director</p>
-            </div>
-          </div>
-          <div class="exp-period">2020 – 2021</div>
         </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SKILLS & CERTIFICATIONS -->
-    <section id="skills" class="section">
-      <span class="section-tag">Skills & Certifications</span>
-      <h2 style="margin-bottom: 40px;">Certified.<br>Skilled. Ready.</h2>
+  <!-- Experience -->
+  <section id="experience" class="py-20 px-6" style="background-color: rgba(255,255,255,0.4);">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Work Experience</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-14 leading-tight">5+ Years in Top<br>Media Agencies</h2>
 
-      <div class="skills-layout">
-        <div>
-          <div class="skills-group-label">Certifications</div>
-          <div class="cert-grid">
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              IELTS 7.0 — C1 Level
+      <div class="space-y-8">
+
+        <!-- OMD -->
+        <div class="rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-2xl font-black">Senior Digital Planner</h3>
+              <p class="text-black/60 mt-1">at <span class="font-bold text-black">OMD Indonesia</span>, an agency under OMG</p>
             </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              Meta Certified Media Planning Professional
+            <span class="text-sm font-medium px-4 py-1.5 rounded-full bg-black/5">2023 – 2024</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-green-600">OBJECTIVE</div>
+              <p class="text-sm text-black/70 leading-relaxed">
+                Retain OMD Indonesia's contract with a major Personal & Healthcare company by rebuilding trust after a broken relationship in late 2022, while expanding the agency's portfolio through new client pitching.
+              </p>
             </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              Meta Media Buying Professional
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              Meta Certified Digital Marketing Associate
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              Meta Certified Business Marketing Strategy
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              Google Ads: Display, Search, Video, Measurement
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              TikTok Certified Media Buying
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              Google Project Management Certificate
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              Outreach Prospecting Specialist
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              LinkedIn Sales Navigator
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              HubSpot: Inbound Sales Certified
-            </div>
-            <div class="cert-item">
-              <span class="cert-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,5 4,7 8,3"/></svg></span>
-              HubSpot: Sales Hub Software Certified
+            <div>
+              <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-blue-600">PLAN & EXECUTION</div>
+              <ul class="space-y-2">
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Went extra miles on every campaign (Wound Care, Body & Face Care, Digital CRM)</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Collaborated with Chief Growth & Strategy Officer on competitive pitches for Baby Products, Home Furniture, Health & Beauty, Investment Apps, and Perfume</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <div class="skills-sidebar">
-          <div>
-            <div class="skills-group-label">Software & Tools</div>
-            <div class="pill-wrap">
-              <span class="pill">Meta Ads Manager</span>
-              <span class="pill">TikTok Ads</span>
-              <span class="pill">Google Ads</span>
-              <span class="pill">LinkedIn Sales Navigator</span>
-              <span class="pill">Apollo.io</span>
-              <span class="pill">HubSpot</span>
-              <span class="pill">Outreach</span>
+        <!-- Wavemaker -->
+        <div class="rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-2xl font-black">Connection Media Planner</h3>
+              <p class="text-black/60 mt-1">at <span class="font-bold text-black">Wavemaker</span>, an agency under GroupM</p>
+            </div>
+            <span class="text-sm font-medium px-4 py-1.5 rounded-full bg-black/5">2021 – 2023</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-green-600">OBJECTIVE</div>
+              <p class="text-sm text-black/70 leading-relaxed">
+                Help a leading men skincare brand increase its market share in the Men Care Category through brand awareness, precision targeting, and performance campaign optimization.
+              </p>
+            </div>
+            <div>
+              <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-blue-600">PLAN & EXECUTION</div>
+              <ul class="space-y-2">
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Strengthen brand awareness & consideration across product launches</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Precision audience targeting through contextual & authentic messaging</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Performance campaign optimization through innovative media solutions</li>
+              </ul>
+              <div class="mt-4 p-3 rounded-lg text-sm font-semibold" style="background-color: rgba(45,106,94,0.12); color: #2D6A5E;">
+                🏆 Contributed to 10-point market share increase (42% → 52%) over two years
+              </div>
             </div>
           </div>
+        </div>
+
+        <!-- Mindshare -->
+        <div class="rounded-2xl p-8 border border-black/10" style="background-color: rgba(255,255,255,0.6);">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-2xl font-black">Data Scientist Executive</h3>
+              <p class="text-black/60 mt-1">at <span class="font-bold text-black">Mindshare</span>, an agency under GroupM</p>
+            </div>
+            <span class="text-sm font-medium px-4 py-1.5 rounded-full bg-black/5">2020 – 2021</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-green-600">OBJECTIVE</div>
+              <p class="text-sm text-black/70 leading-relaxed">
+                Support Mindshare's planning and investment teams by increasing work efficiency through visualized data, enabling faster decision-making for the Unilever account.
+              </p>
+            </div>
+            <div>
+              <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-blue-600">PLAN & EXECUTION</div>
+              <ul class="space-y-2">
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Built Newsletter TV Competition Weekly product — reduced strategy decision-making by 3–4 days</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Automated 100+ monthly Purchase Orders using Excel Macro (VBA) — reduced processing from one week to one day</li>
+              </ul>
+              <p class="mt-4 text-xs text-black/40 italic">
+                Transitioned to client-facing role following recognition from Mindshare's Managing Director
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Certifications -->
+  <section id="skills" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Skills & Certifications</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-14 leading-tight">Certified. Skilled. Ready.</h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-2">
+          <h3 class="font-bold text-lg mb-4">Certifications</h3>
+          <div class="grid sm:grid-cols-2 gap-2">
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">IELTS 7.0 — C1 Level</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">Meta Certified Media Planning Professional</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">Meta Media Buying Professional</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">Meta Certified Digital Marketing Associate</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">Meta Certified Business Marketing Strategy</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">Google Ads: Display, Search, Video, Measurement</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">TikTok Certified Media Buying</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">Google Project Management Certificate</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">Outreach Prospecting Specialist</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">LinkedIn Sales Navigator</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">HubSpot: Inbound Sales Certified</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
+              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span class="text-sm text-black/70">HubSpot: Sales Hub Software Certified</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-8">
           <div>
-            <div class="skills-group-label">Core Skills</div>
-            <div class="pill-wrap">
-              <span class="pill filled">Campaign Management</span>
-              <span class="pill filled">Full-Funnel Strategy</span>
-              <span class="pill filled">Data-Driven Optimization</span>
-              <span class="pill filled">Media Planning & Buying</span>
-              <span class="pill filled">Lead Generation</span>
-              <span class="pill filled">Client Servicing</span>
-              <span class="pill filled">Storytelling</span>
+            <h3 class="font-bold text-lg mb-4">Software & Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-2 rounded-xl text-sm font-medium border border-black/10" style="background-color: rgba(255,255,255,0.6);">Meta Ads Manager</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium border border-black/10" style="background-color: rgba(255,255,255,0.6);">TikTok Ads</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium border border-black/10" style="background-color: rgba(255,255,255,0.6);">Google Ads</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium border border-black/10" style="background-color: rgba(255,255,255,0.6);">LinkedIn Sales Navigator</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium border border-black/10" style="background-color: rgba(255,255,255,0.6);">Apollo.io</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium border border-black/10" style="background-color: rgba(255,255,255,0.6);">HubSpot</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium border border-black/10" style="background-color: rgba(255,255,255,0.6);">Outreach</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-lg mb-4">Personal Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Campaign Management</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Full-Funnel Strategy</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Data-Driven Optimization</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Media Planning & Buying</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Lead Generation</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Client Servicing</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Storytelling</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="contact-box">
-        <span class="section-tag">Get in Touch</span>
-        <h2>Let's Work Together</h2>
-        <p class="contact-desc">
+  <!-- Contact / CTA -->
+  <section id="contact" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="rounded-3xl p-12 md:p-20 text-center" style="background-color:#1A1A1A;">
+        <h2 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+          Let's Work<br>
+          <span style="color:#C9963A;">Together</span>
+        </h2>
+        <p class="text-white/50 text-xl mb-12 max-w-xl mx-auto">
           Looking for a performance marketer who delivers measurable results?
           I'd love to hear about your goals.
         </p>
-        <div class="contact-btns">
-          <a href="mailto:christofer.yusalfino@gmail.com" class="btn-solid">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="mailto:christofer.yusalfino@gmail.com"
+             class="flex items-center gap-3 px-6 py-4 rounded-full text-sm font-semibold text-black transition-opacity hover:opacity-80"
+             style="background-color:#C9963A;">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
             </svg>
-            Email Me
+            christofer.yusalfino@gmail.com
           </a>
-          <a href="https://wa.me/6282242509944?text=Hi%20Chris!%20I%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20potential%20collaboration"
-             target="_blank" rel="noopener noreferrer" class="btn-solid" style="background: #00A884;">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+          <a href="https://wa.me/6282242509944?text=Hi%20Chris!%20I%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20potential%20collaboration" target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-3 px-6 py-4 rounded-full text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+             style="background-color: #00A884;">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.157 1.534 5.933L0 24l6.232-1.512A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10a9.96 9.96 0 01-5.003-1.34l-.358-.214-3.724.902.938-3.617-.235-.375A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2zm-1.07 4.5c-.198-.007-.37-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51z"/>
             </svg>
-            WhatsApp
+            Christofer Yusalfino
           </a>
-          <a href="https://www.linkedin.com/in/christoferyusalfino" target="_blank" rel="noopener noreferrer" class="btn-outline">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+          <a href="https://www.linkedin.com/in/christoferyusalfino" target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-3 px-6 py-4 rounded-full text-sm font-semibold text-white hover:bg-white/20 transition-colors"
+             style="background-color: rgba(255,255,255,0.1);">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
             LinkedIn
           </a>
-          <a href="https://instagram.com/yusalfino" target="_blank" rel="noopener noreferrer" class="btn-outline">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+          <a href="https://instagram.com/yusalfino" target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-3 px-6 py-4 rounded-full text-sm font-semibold text-white hover:bg-white/20 transition-colors"
+             style="background-color: rgba(255,255,255,0.1);">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
             </svg>
             @yusalfino
           </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-black/10">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-4 text-sm text-black/40">
       <span>© 2025 Christofer Yusalfino. All rights reserved.</span>
       <span>Performance Marketing · Jakarta, Indonesia</span>
-    </footer>
-
-  </main>
+    </div>
+  </footer>
 
   <script>
-    function toggleMobileMenu() {
-      const nav = document.getElementById('mobile-nav');
-      const isOpen = nav.style.display === 'flex';
-      nav.style.display = isOpen ? 'none' : 'flex';
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
     }
-
-    function closeMobileMenu() {
-      document.getElementById('mobile-nav').style.display = 'none';
-    }
-
-    // Active nav highlighting on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('#nav-links a');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + entry.target.id) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { threshold: 0.3 });
-
-    sections.forEach(s => observer.observe(s));
   </script>
 
 </body>
