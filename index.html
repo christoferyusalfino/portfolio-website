@@ -14,10 +14,10 @@
       theme: {
         extend: {
           colors: {
-            cream: '#F5F0E0',
-            teal: '#2D6A5E',
-            gold: '#C9963A',
-            dark: '#1A1A1A',
+            cream: '#FFFFFF',
+            teal: '#00C7B7',
+            gold: '#FF6B4A',
+            dark: '#0E1E25',
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
@@ -28,85 +28,95 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
-    body { background-color: #F5F0E0; font-family: 'Inter', sans-serif; }
+    body { background-color: #FFFFFF; font-family: 'Inter', sans-serif; }
     .stat-card:hover { transform: translateY(-2px); transition: transform 0.2s; }
-    .result-card:hover { background: rgba(255,255,255,0.85); transition: background 0.2s; }
+    .result-card:hover { box-shadow: 0 8px 30px rgba(14,30,37,0.08); transition: box-shadow 0.2s; }
+    .blob {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(80px);
+      opacity: 0.55;
+      z-index: 0;
+    }
+    .hero-dark { background-color: #0E1E25; }
   </style>
 </head>
 <body class="text-dark">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-black/10" style="background-color: #F5F0E0;">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 hero-dark">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <span class="font-bold text-lg tracking-tight">Christofer Yusalfino</span>
+      <span class="font-bold text-lg tracking-tight text-white">Christofer Yusalfino</span>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#about" class="text-sm font-medium hover:opacity-50 transition-opacity">About</a>
-        <a href="#results" class="text-sm font-medium hover:opacity-50 transition-opacity">Results</a>
-        <a href="#experience" class="text-sm font-medium hover:opacity-50 transition-opacity">Experience</a>
-        <a href="#skills" class="text-sm font-medium hover:opacity-50 transition-opacity">Skills</a>
-        <a href="https://wa.me/6282242509944?text=Hi%20Chris!%20I%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20potential%20collaboration" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-5 py-2.5 rounded-full text-white transition-opacity hover:opacity-80" style="background-color:#2D6A5E;">
+        <a href="#about" class="text-sm font-medium text-white/70 hover:text-white transition-colors">About</a>
+        <a href="#results" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Results</a>
+        <a href="#experience" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Experience</a>
+        <a href="#skills" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Skills</a>
+        <a href="https://wa.me/6282242509944?text=Hi%20Chris!%20I%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20discuss%20a%20potential%20collaboration" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-5 py-2.5 rounded-full text-dark transition-opacity hover:opacity-80" style="background-color:#00C7B7;">
           Let's Talk
         </a>
       </div>
       <!-- Mobile menu button -->
-      <button onclick="toggleMenu()" class="md:hidden p-1">
+      <button onclick="toggleMenu()" class="md:hidden p-1 text-white">
         <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-black/10 pt-4 flex flex-col gap-3">
-      <a href="#about" onclick="toggleMenu()" class="text-sm font-medium">About</a>
-      <a href="#results" onclick="toggleMenu()" class="text-sm font-medium">Results</a>
-      <a href="#experience" onclick="toggleMenu()" class="text-sm font-medium">Experience</a>
-      <a href="#skills" onclick="toggleMenu()" class="text-sm font-medium">Skills</a>
-      <a href="#contact" onclick="toggleMenu()" class="text-sm font-medium">Contact</a>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-white/10 pt-4 flex flex-col gap-3">
+      <a href="#about" onclick="toggleMenu()" class="text-sm font-medium text-white/80">About</a>
+      <a href="#results" onclick="toggleMenu()" class="text-sm font-medium text-white/80">Results</a>
+      <a href="#experience" onclick="toggleMenu()" class="text-sm font-medium text-white/80">Experience</a>
+      <a href="#skills" onclick="toggleMenu()" class="text-sm font-medium text-white/80">Skills</a>
+      <a href="#contact" onclick="toggleMenu()" class="text-sm font-medium text-white/80">Contact</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="pt-32 pb-20 px-6">
-    <div class="max-w-6xl mx-auto">
+  <section class="pt-32 pb-24 px-6 relative overflow-hidden hero-dark">
+    <div class="blob" style="width:420px; height:420px; top:-100px; right:-80px; background:#00C7B7;"></div>
+    <div class="blob" style="width:380px; height:380px; bottom:-160px; left:-100px; background:#FF6B4A;"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
       <div class="max-w-3xl">
-        <p class="text-sm font-semibold uppercase tracking-widest mb-6" style="color:#2D6A5E;">
+        <p class="text-sm font-semibold uppercase tracking-widest mb-6" style="color:#00C7B7;">
           📍 Jakarta, Indonesia
         </p>
-        <h1 class="text-5xl md:text-7xl font-black leading-none mb-6 tracking-tight">
+        <h1 class="text-5xl md:text-7xl font-black leading-none mb-6 tracking-tight text-white">
           Performance<br>Marketing<br>
-          <span style="color:#2D6A5E;">That Converts.</span>
+          <span style="color:#00C7B7;">That Converts.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-black/60 mb-10 max-w-2xl leading-relaxed">
+        <p class="text-xl md:text-2xl text-white/60 mb-10 max-w-2xl leading-relaxed">
           5+ years running Meta, TikTok & Google Ads in agency environments.
           I build data-driven campaigns that generate real, measurable results.
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="#results" class="px-8 py-4 rounded-full font-semibold text-white text-lg transition-opacity hover:opacity-80" style="background-color:#1A1A1A;">
+          <a href="#results" class="px-8 py-4 rounded-full font-semibold text-dark text-lg transition-opacity hover:opacity-80" style="background-color:#00C7B7;">
             See My Results →
           </a>
-          <a href="#contact" class="px-8 py-4 rounded-full font-semibold text-lg border-2 border-black/20 hover:border-black/40 transition-colors">
+          <a href="#contact" class="px-8 py-4 rounded-full font-semibold text-lg text-white border-2 border-white/20 hover:border-white/40 transition-colors">
             Let's Work Together
           </a>
         </div>
       </div>
 
       <!-- Headline Stats -->
-      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="background-color: rgba(0,0,0,0.1);">
-        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
-          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">6.18x</div>
-          <div class="text-sm text-black/50 leading-tight">ROAS — Meta CPAS Shopee</div>
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="background-color: rgba(255,255,255,0.1);">
+        <div class="p-8 stat-card" style="background-color:#15303A;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#00C7B7;">6.18x</div>
+          <div class="text-sm text-white/50 leading-tight">ROAS — Meta CPAS Shopee</div>
         </div>
-        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
-          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">280K+</div>
-          <div class="text-sm text-black/50 leading-tight">First-Party Data Generated</div>
+        <div class="p-8 stat-card" style="background-color:#15303A;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#00C7B7;">280K+</div>
+          <div class="text-sm text-white/50 leading-tight">First-Party Data Generated</div>
         </div>
-        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
-          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">$0.49</div>
-          <div class="text-sm text-black/50 leading-tight">Cost per WhatsApp Lead</div>
+        <div class="p-8 stat-card" style="background-color:#15303A;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#00C7B7;">$0.49</div>
+          <div class="text-sm text-white/50 leading-tight">Cost per WhatsApp Lead</div>
         </div>
-        <div class="p-8 stat-card" style="background-color:#F5F0E0;">
-          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#2D6A5E;">64%</div>
-          <div class="text-sm text-black/50 leading-tight">Below Market Benchmark CPA</div>
+        <div class="p-8 stat-card" style="background-color:#15303A;">
+          <div class="text-4xl md:text-5xl font-black mb-2" style="color:#00C7B7;">64%</div>
+          <div class="text-sm text-white/50 leading-tight">Below Market Benchmark CPA</div>
         </div>
       </div>
     </div>
@@ -117,7 +127,7 @@
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Introduction</p>
+          <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#00C7B7;">Introduction</p>
           <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
             I explore the world through measurable value.
           </h2>
@@ -159,7 +169,7 @@
   <!-- Results -->
   <section id="results" class="py-20 px-6">
     <div class="max-w-6xl mx-auto">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Campaign Results</p>
+      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#00C7B7;">Campaign Results</p>
       <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Real numbers. Real impact.</h2>
       <p class="text-black/50 text-lg mb-14 max-w-xl">
         Every result below is backed by actual campaign data from agency work at OMD, Wavemaker, and Mindshare.
@@ -177,24 +187,24 @@
           </p>
           <div class="grid grid-cols-3 gap-3 mb-6">
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">6.18x</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">6.18x</div>
               <div class="text-xs text-black/40 mt-1">Return on Ad Spend</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;41K</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">&gt;41K</div>
               <div class="text-xs text-black/40 mt-1">Sales (IDR 680M)</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">$0.70</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">$0.70</div>
               <div class="text-xs text-black/40 mt-1">Cost per Acquisition</div>
             </div>
           </div>
           <div class="border-t border-black/5 pt-4">
             <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
             <ul class="space-y-1">
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Retargeted past buyers within 60-day window</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Tailored creative messaging per audience segment</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> A/B tested product images featuring visible discount amounts</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Retargeted past buyers within 60-day window</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Tailored creative messaging per audience segment</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> A/B tested product images featuring visible discount amounts</li>
             </ul>
           </div>
         </div>
@@ -209,24 +219,24 @@
           </p>
           <div class="grid grid-cols-3 gap-3 mb-6">
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">14,128</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">14,128</div>
               <div class="text-xs text-black/40 mt-1">Chat to WhatsApp</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">$0.49</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">$0.49</div>
               <div class="text-xs text-black/40 mt-1">CPM vs $1.36 benchmark</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">64%</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">64%</div>
               <div class="text-xs text-black/40 mt-1">Lower than Market</div>
             </div>
           </div>
           <div class="border-t border-black/5 pt-4">
             <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
             <ul class="space-y-1">
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Maintained optimal audience size for effective reach</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Tailored creative messaging per audience segment</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Provided engaging auto-text options to improve interaction rates</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Maintained optimal audience size for effective reach</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Tailored creative messaging per audience segment</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Provided engaging auto-text options to improve interaction rates</li>
             </ul>
           </div>
         </div>
@@ -241,24 +251,24 @@
           </p>
           <div class="grid grid-cols-3 gap-3 mb-6">
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">2.39%</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">2.39%</div>
               <div class="text-xs text-black/40 mt-1">Click-Through Rate</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;6K</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">&gt;6K</div>
               <div class="text-xs text-black/40 mt-1">Newsletter Subscribers</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">$0.45</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">$0.45</div>
               <div class="text-xs text-black/40 mt-1">CPL vs $2.11 benchmark</div>
             </div>
           </div>
           <div class="border-t border-black/5 pt-4">
             <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
             <ul class="space-y-1">
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Targeted in-market audience with beauty & skincare purchase intent</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Utilized all Google inventory: display, search, and video</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Engaging headline copy to boost CTR and reduce CPL</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Targeted in-market audience with beauty & skincare purchase intent</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Utilized all Google inventory: display, search, and video</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Engaging headline copy to boost CTR and reduce CPL</li>
             </ul>
           </div>
         </div>
@@ -273,24 +283,24 @@
           </p>
           <div class="grid grid-cols-3 gap-3 mb-6">
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;1,000</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">&gt;1,000</div>
               <div class="text-xs text-black/40 mt-1">Content Shares</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">&gt;2.5M</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">&gt;2.5M</div>
               <div class="text-xs text-black/40 mt-1">Organic Impressions</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">7</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">7</div>
               <div class="text-xs text-black/40 mt-1">Organic IG Posts</div>
             </div>
           </div>
           <div class="border-t border-black/5 pt-4">
             <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
             <ul class="space-y-1">
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Installed dispensers in 5 mosques & 4 musholla across Greater Jakarta</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Aligned brand message (#YakinPindahKe100%) with Ramadhan moment</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Offered direct product trial at the most contextually relevant time</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Installed dispensers in 5 mosques & 4 musholla across Greater Jakarta</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Aligned brand message (#YakinPindahKe100%) with Ramadhan moment</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Offered direct product trial at the most contextually relevant time</li>
             </ul>
           </div>
         </div>
@@ -305,24 +315,24 @@
           </p>
           <div class="grid grid-cols-3 gap-3 mb-6">
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">485K</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">485K</div>
               <div class="text-xs text-black/40 mt-1">Views in 2 Weeks</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">2X</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">2X</div>
               <div class="text-xs text-black/40 mt-1">Engagement Rate vs KPI</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">50%</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">50%</div>
               <div class="text-xs text-black/40 mt-1">Lower CPV vs Competitors</div>
             </div>
           </div>
           <div class="border-t border-black/5 pt-4">
             <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
             <ul class="space-y-1">
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Researched YouTuber alignment with brand ambassador using YouTube data</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Identified contextually authentic match to build the right conversation angle</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Managed full administrative & deal process with talent management</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Researched YouTuber alignment with brand ambassador using YouTube data</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Identified contextually authentic match to build the right conversation angle</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Managed full administrative & deal process with talent management</li>
             </ul>
           </div>
         </div>
@@ -337,24 +347,24 @@
           </p>
           <div class="grid grid-cols-3 gap-3 mb-6">
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">2X</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">2X</div>
               <div class="text-xs text-black/40 mt-1">Higher CTR</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">40%</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">40%</div>
               <div class="text-xs text-black/40 mt-1">Higher VTR (YouTube)</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-black" style="color:#2D6A5E;">23%</div>
+              <div class="text-2xl font-black" style="color:#00C7B7;">23%</div>
               <div class="text-xs text-black/40 mt-1">Lower CPC (Search)</div>
             </div>
           </div>
           <div class="border-t border-black/5 pt-4">
             <p class="text-xs font-semibold uppercase tracking-wider text-black/30 mb-2">How it was achieved</p>
             <ul class="space-y-1">
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Applied 1st-party data targeting & lookalike remarketing in Meta Ads</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Picked more relevant targeting in Google Ads YouTube TrueView</li>
-              <li class="text-xs text-black/50 flex gap-2"><span style="color:#2D6A5E;">›</span> Applied men's affinity keywords in Google Search campaigns</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Applied 1st-party data targeting & lookalike remarketing in Meta Ads</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Picked more relevant targeting in Google Ads YouTube TrueView</li>
+              <li class="text-xs text-black/50 flex gap-2"><span style="color:#00C7B7;">›</span> Applied men's affinity keywords in Google Search campaigns</li>
             </ul>
           </div>
         </div>
@@ -366,7 +376,7 @@
   <!-- Experience -->
   <section id="experience" class="py-20 px-6" style="background-color: rgba(255,255,255,0.4);">
     <div class="max-w-6xl mx-auto">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Work Experience</p>
+      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#00C7B7;">Work Experience</p>
       <h2 class="text-4xl md:text-5xl font-black mb-14 leading-tight">6+ Years in Top<br>Media Agencies</h2>
 
       <div class="space-y-8">
@@ -390,9 +400,9 @@
             <div>
               <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-blue-600">PLAN & EXECUTION</div>
               <ul class="space-y-2">
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Increased the client's app installs by 500K+ net new users per month by scaling acquisition budgets into higher-intent media</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Reduced cost per customer acquisition (CAC) by 12% in 2026 vs. 2025 by reallocating investment toward the right funnel stages</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Collaborate with 3 agency partners across monthly and quarterly planning, reporting, and performance reviews</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Increased the client's app installs by 500K+ net new users per month by scaling acquisition budgets into higher-intent media</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Reduced cost per customer acquisition (CAC) by 12% in 2026 vs. 2025 by reallocating investment toward the right funnel stages</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Collaborate with 3 agency partners across monthly and quarterly planning, reporting, and performance reviews</li>
               </ul>
             </div>
           </div>
@@ -417,12 +427,12 @@
             <div>
               <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-blue-600">PLAN & EXECUTION</div>
               <ul class="space-y-2">
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Generated 280K+ high-intent retail leads and reduced Cost per Lead from USD 40 to under USD 1 (97% reduction)</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Doubled annual retail leads from 300K+ to 670K+ within one year while achieving a 38% reduction in marketing spend</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Delivered 6.2x ROAS on Meta CPAS campaigns and 12K+ Click-to-WhatsApp leads at under USD 0.50 per conversation</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Contributed to 5 business pitches across investment apps, furniture, health & beauty, personal care, and baby care</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Generated 280K+ high-intent retail leads and reduced Cost per Lead from USD 40 to under USD 1 (97% reduction)</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Doubled annual retail leads from 300K+ to 670K+ within one year while achieving a 38% reduction in marketing spend</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Delivered 6.2x ROAS on Meta CPAS campaigns and 12K+ Click-to-WhatsApp leads at under USD 0.50 per conversation</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Contributed to 5 business pitches across investment apps, furniture, health & beauty, personal care, and baby care</li>
               </ul>
-              <div class="mt-4 p-3 rounded-lg text-sm font-semibold" style="background-color: rgba(45,106,94,0.12); color: #2D6A5E;">
+              <div class="mt-4 p-3 rounded-lg text-sm font-semibold" style="background-color: rgba(0,199,183,0.12); color: #00C7B7;">
                 🏆 25–30% better cost efficiency than industry benchmarks
               </div>
             </div>
@@ -448,9 +458,9 @@
             <div>
               <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-blue-600">PLAN & EXECUTION</div>
               <ul class="space-y-2">
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Drove 35% cost efficiency versus benchmark through continuous A/B testing and audience refinement</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Reduced Cost per Click by 15% (to USD 0.60) and Cost per Purchase by 15% (USD 48) through AI-assisted optimization</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Contributed an estimated 5% revenue increase from Q2 2024 by qualifying and onboarding 4 new clients</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Drove 35% cost efficiency versus benchmark through continuous A/B testing and audience refinement</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Reduced Cost per Click by 15% (to USD 0.60) and Cost per Purchase by 15% (USD 48) through AI-assisted optimization</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Contributed an estimated 5% revenue increase from Q2 2024 by qualifying and onboarding 4 new clients</li>
               </ul>
             </div>
           </div>
@@ -475,11 +485,11 @@
             <div>
               <div class="inline-block px-3 py-1 rounded text-white text-xs font-bold mb-3 bg-blue-600">PLAN & EXECUTION</div>
               <ul class="space-y-2">
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Planned omnichannel campaigns (TV, Radio, Cinema, OOH, Digital) reaching 25M+ unique users, surpassing the 20M industry benchmark</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Led targeted digital campaigns generating USD 4M+ in annualized revenue and supporting 10% market share growth</li>
-                <li class="text-sm text-black/70 flex gap-2"><span style="color:#2D6A5E;" class="font-bold">›</span> Played a key role in driving the brand to over 50% market share (July 2022), ranking #1 in Indonesia, validated by Nielsen data</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Planned omnichannel campaigns (TV, Radio, Cinema, OOH, Digital) reaching 25M+ unique users, surpassing the 20M industry benchmark</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Led targeted digital campaigns generating USD 4M+ in annualized revenue and supporting 10% market share growth</li>
+                <li class="text-sm text-black/70 flex gap-2"><span style="color:#00C7B7;" class="font-bold">›</span> Played a key role in driving the brand to over 50% market share (July 2022), ranking #1 in Indonesia, validated by Nielsen data</li>
               </ul>
-              <div class="mt-4 p-3 rounded-lg text-sm font-semibold" style="background-color: rgba(45,106,94,0.12); color: #2D6A5E;">
+              <div class="mt-4 p-3 rounded-lg text-sm font-semibold" style="background-color: rgba(0,199,183,0.12); color: #00C7B7;">
                 🏆 Contributed to 10-point market share increase (42% → 52%) over two years
               </div>
             </div>
@@ -493,7 +503,7 @@
   <!-- Skills & Certifications -->
   <section id="skills" class="py-20 px-6">
     <div class="max-w-6xl mx-auto">
-      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#2D6A5E;">Skills & Certifications</p>
+      <p class="text-sm font-semibold uppercase tracking-widest mb-4" style="color:#00C7B7;">Skills & Certifications</p>
       <h2 class="text-4xl md:text-5xl font-black mb-14 leading-tight">Certified. Skilled. Ready.</h2>
 
       <div class="grid md:grid-cols-3 gap-8">
@@ -501,51 +511,51 @@
           <h3 class="font-bold text-lg mb-4">Certifications</h3>
           <div class="grid sm:grid-cols-2 gap-2">
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">IELTS 7.0 — C1 Level</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">Meta Certified Media Planning Professional</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">Meta Media Buying Professional</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">Meta Certified Digital Marketing Associate</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">Meta Certified Business Marketing Strategy</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">Google Ads: Display, Search, Video, Measurement</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">TikTok Certified Media Buying</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">Google Project Management Certificate</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">Outreach Prospecting Specialist</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">LinkedIn Sales Navigator</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">HubSpot: Inbound Sales Certified</span>
             </div>
             <div class="flex items-center gap-2 p-3 rounded-xl border border-black/5" style="background-color: rgba(255,255,255,0.6);">
-              <span style="color:#2D6A5E;" class="font-bold text-lg">✓</span>
+              <span style="color:#00C7B7;" class="font-bold text-lg">✓</span>
               <span class="text-sm text-black/70">HubSpot: Sales Hub Software Certified</span>
             </div>
           </div>
@@ -568,13 +578,13 @@
           <div>
             <h3 class="font-bold text-lg mb-4">Personal Skills</h3>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Campaign Management</span>
-              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Full-Funnel Strategy</span>
-              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Data-Driven Optimization</span>
-              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Media Planning & Buying</span>
-              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Lead Generation</span>
-              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Client Servicing</span>
-              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#2D6A5E;">Storytelling</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#00C7B7;">Campaign Management</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#00C7B7;">Full-Funnel Strategy</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#00C7B7;">Data-Driven Optimization</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#00C7B7;">Media Planning & Buying</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#00C7B7;">Lead Generation</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#00C7B7;">Client Servicing</span>
+              <span class="px-3 py-2 rounded-xl text-sm font-medium text-white" style="background-color:#00C7B7;">Storytelling</span>
             </div>
           </div>
         </div>
@@ -585,19 +595,21 @@
   <!-- Contact / CTA -->
   <section id="contact" class="py-20 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="rounded-3xl p-12 md:p-20 text-center" style="background-color:#1A1A1A;">
-        <h2 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+      <div class="rounded-3xl p-12 md:p-20 text-center relative overflow-hidden" style="background-color:#0E1E25;">
+        <div class="blob" style="width:340px; height:340px; top:-120px; left:-80px; background:#00C7B7; opacity:0.4;"></div>
+        <div class="blob" style="width:300px; height:300px; bottom:-140px; right:-60px; background:#FF6B4A; opacity:0.4;"></div>
+        <h2 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight relative z-10">
           Let's Work<br>
-          <span style="color:#C9963A;">Together</span>
+          <span style="color:#FF6B4A;">Together</span>
         </h2>
-        <p class="text-white/50 text-xl mb-12 max-w-xl mx-auto">
+        <p class="text-white/50 text-xl mb-12 max-w-xl mx-auto relative z-10">
           Looking for a performance marketer who delivers measurable results?
           I'd love to hear about your goals.
         </p>
-        <div class="flex flex-wrap gap-4 justify-center">
+        <div class="flex flex-wrap gap-4 justify-center relative z-10">
           <a href="mailto:christofer.yusalfino@gmail.com"
              class="flex items-center gap-3 px-6 py-4 rounded-full text-sm font-semibold text-black transition-opacity hover:opacity-80"
-             style="background-color:#C9963A;">
+             style="background-color:#FF6B4A;">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
